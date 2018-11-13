@@ -8,8 +8,37 @@
 </head>
 <body class="exercicio">
 
+    <div id="app">
+        <!---->
+        <p v-for='(alun, i) in aluns'>
+            {{i + 1}}) {{alun.name}} - {{ alun.note}}
+            <span v-if='alun.note >= 9'> - Honor</span>
+            <span v-else-if='alun.note >= 7'> - Aproved</span>
+            <span v-else-if='alun.note >= 4'> - Recuperation</span>
+            <span v-else> - Reproved</span>
+        </p>
+        <!---->
+        <ul style="list-style: none;">
+            <li v-for='n in 15'>
+                <span v-show='n >= 4'>{{ n }}</span>
+            </li>
+        </ul>
+    </div>
+
     <script>
-        // ...
+        new Vue({
+            el: '#app',
+            data:{
+                aluns: [
+                    {name: 'Ana', note: 7.8},
+                    {name: 'Carlos', note: 9.8},
+                    {name: 'Robert', note: 5.6},
+                    {name: 'Stefan', note: 7.2},
+                    {name: 'Matt', note: 10},
+                    {name: 'John', note: 2.8}
+                ]
+            }
+        })
     </script>
 </body>
 </html>
