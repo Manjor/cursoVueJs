@@ -8,8 +8,31 @@
 </head>
 <body class="exercicio">
 
+
+    <div id="app">
+        <p>{{ link }}</p>
+        <!--Use Directive v-bind:href-->
+        <p><a v-bind:href='link' target="_blank">Link Ok</a></p>
+        <p><a :href='link' target="_blank">Link second bind</a></p>
+        <p>
+            <input type="text" v-model='name'> <br>
+            <span>{{ name }}</span>
+        </p>
+    </div>
+
     <script>
-        // ...
+        new Vue({
+            el: '#app',
+            data: {
+                link: 'https://youtube.com/cod3rcursos',
+                name: 'Mary'
+            },
+            watch:{
+                name(newValue){
+                    console.log(newValue.toUpperCase())
+                }
+            }
+        })
     </script>
 </body>
 </html>
