@@ -7,9 +7,51 @@
     <script src="/js/vue.min.js"></script>
 </head>
 <body class="exercicio">
+    
+    <div id="app">
+        <p>{{ cont }}</p>
+        <p>
+            <button v-on:click='add()'>+1</button>
+            <!--Can use @click='cont -= 2'-->
+            <button @click='rem()'>-1</button>
+        </p>
+        <p @mousemove='updatePosition'>
+            Coordinator: {{ x }} e {{ y }}
+            <span @mousemove.stop>Here Not</span>
+            <!--Or Use <span @mousemove='stop()>'>-->
+        </p>
+        <!--Call function alert() when press enter of keyboard -->
+        <input type="text" @keyup.enter='alert()'>
+    </div>
 
     <script>
-        // ...
+        new Vue({
+            el: '#app',
+            data: {
+                cont: 0,
+                x: 0,
+                y: 0
+            },
+            methods: {
+                
+                add(){
+                    this.cont ++
+                },
+                rem(){
+                    this.cont --
+                },
+                updatePosition(e){
+                    this.x = e.clientX
+                    this.y = e.clientY
+                },
+                stop(e){
+                    e.stopPropagation()
+                },
+                alert(){
+                    alert('Enter')
+                }
+            }
+        })
     </script>
 </body>
 </html>
