@@ -7,9 +7,46 @@
     <script src="/js/vue.min.js"></script>
 </head>
 <body class="exercicio">
+    
+    <!--Template to #app-->
+    <div id="app">
+        <!--Double Moustache-->
+        <p>1) {{ 2 + 2}}</p>
+        <!--Can use basic functions of js-->
+        <p>2) {{ "teste".toUpperCase()}}</p>
+        <!--Use data-->
+        <p>3) Product: {{ name }}, R$ {{ price }} with {{ off * 100 }}% OFF</p>
+        <p>4) Clock Right: {{ clockRight() }}</p>
+        <p>5) Price with off: R$ {{ priceWithOff }}</p>
+    </div>
 
     <script>
-        // ...
+        
+        //Instance of VueJs
+        //Storage in costant
+        // const one = new Vue
+        new Vue({
+            //Propriet
+            el: "#app",
+            //Atributes of instance
+            data:{
+                name: 'Paint',
+                price: 6.89,
+                off: 0.15
+            },
+            //Methods of instance
+            methods :{
+                clockRight(){
+                    return new Date().toLocaleString()
+                }
+            },
+            //Values Computeds
+            computed:{
+                priceWithOff(){
+                    return this.price * (1 - this.off)
+                }
+            }
+        })
     </script>
 </body>
 </html>
