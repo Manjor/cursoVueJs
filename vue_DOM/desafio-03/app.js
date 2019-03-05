@@ -5,11 +5,7 @@ new Vue({
     },
     computed:{
         resultado(){
-            if(this.valor !== 37){
-                return 'Valor Diferente'
-            }else{
-                return 'Valor Igual'
-            }
+            return this.valor == 37 ? 'Valor Igual' : 'Valor Diferente'
         }
     },
     watch:{
